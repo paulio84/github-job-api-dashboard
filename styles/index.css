@@ -1,0 +1,61 @@
+@tailwind base;
+
+/* custom base styles go here */
+
+@tailwind components;
+
+/* custom component styles here */
+
+@tailwind utilities;
+
+/* custom utilities here */
+@layer base {
+  /* roboto-regular - latin */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), url('/assets/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+      url('/assets/fonts/roboto-v20-latin-regular.woff') format('woff');
+  }
+  /* roboto-500 - latin */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Roboto Medium'), url('/assets/fonts/roboto-v20-latin-500.woff2') format('woff2'),
+      url('/assets/fonts/roboto-v20-latin-500.woff') format('woff');
+  }
+  /* roboto-700 - latin */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), url('/assets/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+      url('/assets/fonts/roboto-v20-latin-700.woff') format('woff');
+  }
+  /* poppins-300 - latin */
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Poppins Light'), url('/assets/fonts/poppins-v13-latin-300.woff2') format('woff2'),
+      url('/assets/fonts/poppins-v13-latin-300.woff') format('woff');
+  }
+  /* poppins-500 - latin */
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Poppins Medium'), url('/assets/fonts/poppins-v13-latin-500.woff2') format('woff2'),
+      url('/assets/fonts/poppins-v13-latin-500.woff') format('woff');
+  }
+  /* poppins-700 - latin */
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Poppins Bold'), url('/assets/fonts/poppins-v13-latin-700.woff2') format('woff2'),
+      url('/assets/fonts/poppins-v13-latin-700.woff') format('woff');
+  }
+}
