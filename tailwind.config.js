@@ -18,12 +18,8 @@ module.exports = {
       white: '#ffffff'
     },
     fontFamily: {
-      'poppins-light': ['"Poppins Light"', 'sans-serif'],
-      'roboto-regular': ['Roboto', 'sans-serif'],
-      'poppins-medium': ['"Poppins Medium"', 'sans-serif'],
-      'roboto-medium': ['"Roboto Medium"', 'sans-serif'],
-      'poppins-bold': ['"Poppins Bold"', 'sans-serif'],
-      'roboto-bold': ['"Roboto Bold"', 'sans-serif']
+      roboto: ['Roboto', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif']
     }
   },
   variants: {},
