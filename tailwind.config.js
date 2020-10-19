@@ -5,6 +5,10 @@ module.exports = {
   },
   purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    boxShadow: {
+      default: '0px 2px 4px rgba(0, 0, 0, 0.05)',
+      lg: '0px 2px 8px rgba(0, 0, 0, 0.1)'
+    },
     colors: {
       blue: {
         primary: '#334680',

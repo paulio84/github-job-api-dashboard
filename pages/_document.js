@@ -12,6 +12,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         </Head>
         <body className="bg-gray-light">
           <Main />
