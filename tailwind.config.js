@@ -1,7 +1,11 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true
+    purgeLayersByDefault: true,
+    defaultLineHeights: true,
+    standardFontWeights: true
   },
   purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -27,5 +31,35 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const images = {
+        '.img-size-42': {
+          height: '42px',
+          maxWidth: '42px'
+        },
+        '.img-size-90': {
+          height: '90px',
+          maxWidth: '90px'
+        }
+      };
+      addUtilities(images);
+
+      const materialIcons = {
+        '.material-icons': {
+          fontSize: '16px'
+        }
+      };
+      addUtilities(materialIcons);
+
+      const howToApply = {
+        '.how-to-apply': {
+          '& a': {
+            color: '#1e86ff'
+          }
+        }
+      };
+      addUtilities(howToApply);
+    })
+  ]
 };

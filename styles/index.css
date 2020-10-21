@@ -1,21 +1,7 @@
 @tailwind base;
-
-/* custom base styles go here */
-.img-size-90 {
-  height: 90px;
-  max-width: 90px;
-}
-.material-icons {
-  font-size: 16px;
-}
-
 @tailwind components;
-
-/* custom component styles here */
-
 @tailwind utilities;
 
-/* custom utilities here */
 @layer base {
   /* roboto-regular - latin */
   @font-face {
