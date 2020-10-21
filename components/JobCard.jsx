@@ -1,15 +1,11 @@
 import { string } from 'prop-types';
+import { formatCreatedAtDate } from '@/lib/helpers';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import parse from 'date-fns/parse';
 import IconLabel from '@/components/IconLabel';
 import Tag from '@/components/Tag';
 
 const JobCard = ({ companyName, title, type, location, createdAt, companyLogo }) => {
-  const formattedCreatedAt = parse(
-    createdAt.replace('UTC ', ''),
-    'E MMM dd HH:mm:ss yyyy',
-    new Date()
-  );
+  const formattedCreatedAt = formatCreatedAtDate(createdAt);
 
   return (
     <article className="font-roboto text-blue-primary bg-white rounded flex p-3 shadow">
