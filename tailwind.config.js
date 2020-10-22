@@ -66,11 +66,13 @@ module.exports = {
           marginBottom: '4rem',
 
           '& p': {
-            '& > strong': {
-              display: 'inline-block',
-              marginTop: '1rem',
-              marginBottom: '1rem'
-            }
+            margin: '1rem 0'
+          },
+
+          '& ul': {
+            listStyle: 'disc',
+            marginLeft: '1rem',
+            paddingLeft: '1rem'
           }
         }
       };
