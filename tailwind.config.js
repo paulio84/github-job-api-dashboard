@@ -1,5 +1,12 @@
 const plugin = require('tailwindcss/plugin');
 
+const colourTheme = {
+  blue: { primary: '#334680', secondary: '#1e86ff' },
+  gray: { dark: '#b9bdcf', light: '#f6f7fb' },
+  black: '#282538',
+  white: '#ffffff'
+};
+
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
@@ -13,21 +20,15 @@ module.exports = {
       default: '0px 2px 4px rgba(0, 0, 0, 0.05)',
       lg: '0px 2px 8px rgba(0, 0, 0, 0.1)'
     },
-    colors: {
-      blue: {
-        primary: '#334680',
-        secondary: '#1e86ff'
-      },
-      gray: {
-        dark: '#b9bdcf',
-        light: '#f6f7fb'
-      },
-      black: '#282538',
-      white: '#ffffff'
-    },
+    colors: colourTheme,
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif']
+    },
+    extend: {
+      gridTemplateColumns: {
+        'job-grid': 'minmax(300px, 310px) auto'
+      }
     }
   },
   variants: {},
@@ -55,7 +56,7 @@ module.exports = {
       const howToApply = {
         '.how-to-apply': {
           '& a': {
-            color: '#1e86ff'
+            color: colourTheme.blue.secondary
           }
         }
       };

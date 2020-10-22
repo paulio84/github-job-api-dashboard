@@ -23,7 +23,7 @@ const JobPage = ({ jobListing }) => {
 
   return (
     <main>
-      <article>
+      <article className="lg:grid lg:grid-cols-job-grid lg:place-content-between lg:gap-x-12">
         <aside className="font-poppins text-sm leading-none">
           <Link href="/">
             <a className="text-blue-secondary font-medium flex items-center mb-8 pb-1">
