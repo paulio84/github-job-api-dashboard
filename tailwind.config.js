@@ -60,6 +60,21 @@ module.exports = {
         }
       };
       addUtilities(howToApply);
+
+      const jobDescription = {
+        '.description': {
+          marginBottom: '4rem',
+
+          '& p': {
+            '& > strong': {
+              display: 'inline-block',
+              marginTop: '1rem',
+              marginBottom: '1rem'
+            }
+          }
+        }
+      };
+      addUtilities(jobDescription);
     })
   ]
 };
