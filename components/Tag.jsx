@@ -1,7 +1,15 @@
-const Label = ({ text }) => (
-  <span className="font-bold text-xs inline-block border text-blue-primary p-2 mb-6 md:mb-0 rounded self-start leading-none">
+import { string } from 'prop-types';
+
+const Label = ({ text, additionalClassStyles }) => (
+  <span
+    className={`font-bold text-xs inline-block border text-blue-primary p-2 rounded self-start leading-none ${additionalClassStyles}`}
+  >
     {text}
   </span>
 );
+Label.propTypes = {
+  text: string.isRequired,
+  additionalClassStyles: string
+};
 
 export default Label;

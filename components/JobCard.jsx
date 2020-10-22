@@ -16,7 +16,7 @@ const JobCard = ({ companyName, title, type, location, createdAt, companyLogo })
         <p className="font-bold text-xs leading-none mb-2">{companyName}</p>
         <h1 className="leading-none mb-3">{title}</h1>
         <div className="md:flex md:items-center md:justify-between">
-          <Tag text={type} />
+          <Tag text={type} additionalClassStyles="mb-6 md:mb-0" />
           <div className="flex text-gray-dark text-xs justify-between md:space-x-8">
             <IconLabel iconName="public" text={location} />
             <IconLabel
