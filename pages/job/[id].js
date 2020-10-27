@@ -3,11 +3,16 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import IconLabel from '@/components/IconLabel';
+import Error from '@/components/Error';
 import { SiteLayout } from '@/components/Layouts';
 import Tag from '@/components/Tag';
 import { formatCreatedAtDate } from '@/lib/helpers';
 
-const JobPage = ({ jobListing }) => {
+const JobPage = ({ errorCode, jobListing }) => {
+  if (errorCode) {
+    return <Error errorCode={errorCode} />;
+  }
+
   const {
     company,
     company_logo,
@@ -23,7 +28,7 @@ const JobPage = ({ jobListing }) => {
 
   return (
     <main>
-      <article className="lg:grid lg:grid-cols-job-grid lg:place-content-between lg:gap-x-12">
+      <article className="lg:grid lg:grid-cols-job lg:place-content-between lg:gap-x-12">
         <aside className="font-poppins text-sm leading-none">
           <Link href="/">
             <a className="text-blue-secondary font-medium flex items-center mb-8 pb-1">
@@ -85,10 +90,14 @@ export async function getServerSideProps(context) {
   const res = await fetch(
     `https://jobs.github.com/positions/${context.params.id}.json?markdown=true`
   );
-  const jobListing = await res.json();
+  const errorCode = res.ok ? false : res.status;
+  let jobListing = null;
+  if (!errorCode) {
+    jobListing = await res.json();
+  }
 
   return {
-    props: { jobListing }
+    props: { errorCode, jobListing }
   };
 }
 
