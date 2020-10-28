@@ -1,3 +1,9 @@
+:root {
+  --job-page-sidebar-width: 310px;
+  --home-page-sidebar-width: 350px;
+  --search-icon: 42px;
+}
+
 @tailwind base;
 
 /* these styles will get baked in with Tailwind base */

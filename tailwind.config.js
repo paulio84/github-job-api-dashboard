@@ -27,10 +27,12 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        job: 'minmax(300px, 310px) auto',
-        searchbox: '42px auto',
-        'searchbox-button': '42px auto 33%',
-        'searchbox-button-lg': '42px auto 20%'
+        job: 'var(--job-page-sidebar-width) auto',
+        home: 'auto',
+        'home-lg': 'var(--home-page-sidebar-width) auto',
+        searchbox: 'var(--search-icon) auto',
+        'searchbox-button': 'var(--search-icon) auto 33%',
+        'searchbox-button-lg': 'var(--search-icon) auto 20%'
       },
       backgroundImage: (theme) => ({
         searchbox: "url('/assets/images/backgroundImg.png')"

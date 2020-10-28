@@ -56,7 +56,11 @@ const JobPage = ({ errorCode, jobListing }) => {
           />
           <div className="flex mb-8">
             <aside>
-              <img className="rounded img-size-42" src={company_logo} alt={`${company} Logo`} />
+              <img
+                className="rounded img-size-42"
+                src={company_logo ? company_logo : 'https://via.placeholder.com/42'}
+                alt={`${company} Logo`}
+              />
             </aside>
             <section className="ml-3 w-full">
               <p className="font-bold text-lg leading-5 mb-2">{company}</p>

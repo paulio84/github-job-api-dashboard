@@ -8,9 +8,15 @@ const JobCard = ({ companyName, title, type, location, createdAt, companyLogo })
   const formattedCreatedAt = formatCreatedAtDate(createdAt);
 
   return (
-    <article className="font-roboto text-blue-primary bg-white rounded flex p-3 shadow">
+    <article className="font-roboto text-blue-primary bg-white rounded flex p-3 shadow mt-6">
       <aside>
-        <img className="rounded img-size-90" src={companyLogo} alt={`${companyName} Logo`} />
+        <img
+          className="rounded img-size-90"
+          src={companyLogo ? companyLogo : 'https://via.placeholder.com/90'}
+          alt={`${companyName} Logo`}
+          width="90"
+          height="90"
+        />
       </aside>
       <section className="ml-4 w-full">
         <p className="font-bold text-xs leading-none mb-2">{companyName}</p>
@@ -35,7 +41,7 @@ JobCard.propTypes = {
   type: string.isRequired,
   location: string.isRequired,
   createdAt: string.isRequired,
-  companyLogo: string.isRequired
+  companyLogo: string
 };
 
 export default JobCard;
