@@ -1,3 +1,4 @@
 import SiteLayout from './SiteLayout';
+import HomePageLayout from './HomePageLayout';
 
-export { SiteLayout };
+export { HomePageLayout, SiteLayout };

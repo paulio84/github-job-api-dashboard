@@ -1,28 +1,13 @@
 import JobList from '@/components/JobList';
-import SearchBox from '@/components/SearchBox';
-import { SiteLayout } from '@/components/Layouts';
 
-const Index = () => {
-  return (
-    <main>
-      <div className="rounded-lg bg-blue-primary py-10 px-4 bg-searchbox bg-center md:bg-cover">
-        <SearchBox />
-      </div>
-      <div className="grid grid-cols-home lg:grid-cols-home-lg">
-        <JobList />
-      </div>
-      {/* <JobCard
-        companyName="Kasisto"
-        title="Front-End Software Developer"
-        type="Full time" 
-        location="Remote"
-        createdAt="Mon Oct 12 15:59:27 UTC 2020"
-        companyLogo="https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFdMIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09e058440662150cf22211cb95ce476343f97978/gun.io_NoBox_black%20(6).png"
-      /> */}
-    </main>
-  );
-};
+import { HomePageLayout, SiteLayout } from '@/components/Layouts';
 
-Index.getLayout = (page) => <SiteLayout>{page}</SiteLayout>;
+const Index = () => <JobList />;
+
+Index.getLayout = (page) => (
+  <SiteLayout>
+    <HomePageLayout>{page}</HomePageLayout>
+  </SiteLayout>
+);
 
 export default Index;

@@ -8,7 +8,7 @@ const JobCard = ({ companyName, title, type, location, createdAt, companyLogo })
   const formattedCreatedAt = formatCreatedAtDate(createdAt);
 
   return (
-    <article className="font-roboto text-blue-primary bg-white rounded flex p-3 shadow mt-6">
+    <article className="font-roboto text-blue-primary bg-white rounded flex p-3 shadow mt-6 lg:mt-8">
       <aside>
         <img
           className="rounded img-size-90"
