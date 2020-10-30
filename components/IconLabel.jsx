@@ -1,7 +1,7 @@
 import { string } from 'prop-types';
 
 const IconLabel = ({ iconName, text, additionalClassStyles }) => (
-  <span className={`flex items-center ${additionalClassStyles}`}>
+  <span className={`flex items-center ${additionalClassStyles ?? ''}`}>
     <i className="mr-2 material-icons">{iconName}</i>
     <span>{text}</span>
   </span>

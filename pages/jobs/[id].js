@@ -38,7 +38,7 @@ const JobPage = ({ errorCode, jobListing }) => {
           </Link>
           <p className="text-gray-dark uppercase mb-4">How to apply</p>
           <ReactMarkdown
-            className="how-to-apply text-blue-primary leading-5 mb-8 pb-1"
+            className="how-to-apply text-blue-primary leading-5 mb-8 pb-1 overflow-hidden"
             plugins={[gfm]}
             children={how_to_apply}
             linkTarget="_blank"

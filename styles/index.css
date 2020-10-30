@@ -65,6 +65,6 @@
 /* it's possible to also use the tailwind.config.js file via plugins */
 @layer utilities {
   .min-w-fit {
-    min-width: 'fit-content';
+    min-width: fit-content;
   }
 }
