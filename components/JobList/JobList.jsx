@@ -1,12 +1,18 @@
 import Link from 'next/link';
 import useFetchJobs from '@/hooks/useFetchJobs';
 import JobCard from '@/components/JobCard';
+import Spinner from '@/components/Spinner';
 
 const JobList = ({ description = '', location = '', full_time = '' }) => {
   const { data, error, isLoading } = useFetchJobs(description, location, full_time);
 
-  if (error) return <div>{error.message}</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (error)
+    return (
+      <div className="font-poppins text-white bg-red-secondary border-red-primary border-2 mt-8 p-4 rounded block-size-fit">
+        {error.message}
+      </div>
+    );
+  if (isLoading) return <Spinner />;
 
   return (
     <div>

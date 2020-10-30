@@ -4,7 +4,8 @@ const colourTheme = {
   blue: { primary: '#334680', secondary: '#1e86ff' },
   gray: { dark: '#b9bdcf', light: '#f6f7fb' },
   black: '#282538',
-  white: '#ffffff'
+  white: '#ffffff',
+  red: { primary: '#c53030', secondary: '#f56565' }
 };
 
 module.exports = {

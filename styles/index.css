@@ -67,4 +67,10 @@
   .min-w-fit {
     min-width: fit-content;
   }
+  .w-fit {
+    width: fit-content;
+  }
+  .block-size-fit {
+    block-size: fit-content;
+  }
 }
