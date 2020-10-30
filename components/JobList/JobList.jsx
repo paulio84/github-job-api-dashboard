@@ -1,36 +1,17 @@
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import useFetchJobs from '@/hooks/useFetchJobs';
 import JobCard from '@/components/JobCard';
 
 const JobList = ({ description = '', location = '', full_time = '' }) => {
-  const [jobs, setJobs] = useState([]);
+  const { data, error, isLoading } = useFetchJobs(description, location, full_time);
 
-  useEffect(() => {
-    let isSubscribed = true;
-    async function fetchData() {
-      const res = await fetch(
-        `/api/jobs?description=${description}&location=${location}&full_time=${full_time}`
-      );
-
-      if (isSubscribed) {
-        const { data, error } = await res.json();
-        if (error) {
-          console.log('ERROR - NEED BETTER ERROR HANDLING');
-          setJobs([]);
-        } else if (data) {
-          setJobs(data);
-        }
-      }
-    }
-    fetchData();
-
-    return () => (isSubscribed = false);
-  }, [description, location, full_time]);
+  if (error) return <div>{error.message}</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>
       <ul>
-        {jobs.map((job) => (
+        {data.map((job) => (
           <li key={job.id}>
             <Link href={`/jobs/${job.id}`}>
               <a>
