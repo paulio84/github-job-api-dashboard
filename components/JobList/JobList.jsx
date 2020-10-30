@@ -32,7 +32,7 @@ const JobList = ({ description = '', location = '', full_time = '' }) => {
       <ul>
         {jobs.map((job) => (
           <li key={job.id}>
-            <Link href={`/job/${job.id}`}>
+            <Link href={`/jobs/${job.id}`}>
               <a>
                 <JobCard
                   companyName={job.company}
