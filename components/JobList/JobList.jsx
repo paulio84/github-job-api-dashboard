@@ -2,19 +2,24 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import JobCard from '@/components/JobCard';
 
-const JobList = ({ description = 'Engineer', location = '', full_time = 'on' }) => {
+const JobList = ({ description = '', location = '', full_time = '' }) => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     let isSubscribed = true;
     async function fetchData() {
       const res = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${full_time}&markdown=false`
+        `/api/jobs?description=${description}&location=${location}&full_time=${full_time}`
       );
 
       if (isSubscribed) {
-        const data = await res.json();
-        setJobs(data);
+        const { data, error } = await res.json();
+        if (error) {
+          console.log('ERROR - NEED BETTER ERROR HANDLING');
+          setJobs([]);
+        } else if (data) {
+          setJobs(data);
+        }
       }
     }
     fetchData();
