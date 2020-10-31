@@ -7,11 +7,11 @@ const SearchBox = () => {
   return (
     <JobsContext.Consumer>
       {({ description, onChangeDescription }) => {
-        const onHandleClick = (e) => {
+        const handleClick = (e) => {
           onChangeDescription(searchRef.current.value);
         };
 
-        const onHandleKeyUp = (e) => {
+        const handleKeyUp = (e) => {
           if (e.keyCode === 13) {
             onChangeDescription(searchRef.current.value);
           }
@@ -28,10 +28,10 @@ const SearchBox = () => {
               placeholder="Title, Companies, Expertise"
               defaultValue={description}
               ref={searchRef}
-              onKeyUp={onHandleKeyUp}
+              onKeyUp={handleKeyUp}
             />
             <button
-              onClick={onHandleClick}
+              onClick={handleClick}
               className="bg-blue-secondary text-white rounded font-roboto font-medium cursor-pointer"
             >
               Search

@@ -8,8 +8,20 @@ const SiteLayout = ({ children }) => {
     setDescription(newDescription);
   };
 
+  const [location, setLocation] = useState('');
+  const changeLocation = (newLocation) => {
+    setLocation(newLocation);
+  };
+
   return (
-    <JobsContext.Provider value={{ description, onChangeDescription: changeDescription }}>
+    <JobsContext.Provider
+      value={{
+        description,
+        onChangeDescription: changeDescription,
+        location,
+        onChangeLocation: changeLocation
+      }}
+    >
       <div className="container px-3 md:mx-auto">
         <Header />
         {children}
