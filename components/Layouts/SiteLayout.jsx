@@ -13,13 +13,20 @@ const SiteLayout = ({ children }) => {
     setLocation(newLocation);
   };
 
+  const [fullTime, setFullTime] = useState(false);
+  const updateFullTimeFlag = (newFullTime) => {
+    setFullTime(newFullTime);
+  };
+
   return (
     <JobsContext.Provider
       value={{
         description,
         onChangeDescription: changeDescription,
         location,
-        onChangeLocation: changeLocation
+        onChangeLocation: changeLocation,
+        fullTime,
+        onUpdateFullTimeFlag: updateFullTimeFlag
       }}
     >
       <div className="container px-3 md:mx-auto">

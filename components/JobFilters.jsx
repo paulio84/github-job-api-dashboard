@@ -4,12 +4,17 @@ import { debounce } from '@/lib/helpers';
 
 const JobFilters = () => {
   const locationRef = useRef();
+  const fullTimeRef = useRef();
 
   return (
     <JobsContext.Consumer>
-      {({ location, onChangeLocation }) => {
+      {({ location, onChangeLocation, fullTime, onUpdateFullTimeFlag }) => {
         const handleChange = () => {
           onChangeLocation(locationRef.current.value);
+        };
+
+        const handleFullTimeChange = () => {
+          onUpdateFullTimeFlag(fullTimeRef.current.checked);
         };
 
         const handleKeyUp = (e) => {
@@ -21,7 +26,14 @@ const JobFilters = () => {
         return (
           <div className="font-poppins text-blue-primary text-sm mt-6 lg:mt-8">
             <label className="font-medium w-fit cursor-pointer" htmlFor="full_time">
-              <input id="full_time" className="mr-3 ml-1 transform scale-150" type="checkbox" />
+              <input
+                id="full_time"
+                className="mr-3 ml-1 transform scale-150"
+                type="checkbox"
+                defaultChecked={fullTime}
+                ref={fullTimeRef}
+                onChange={handleFullTimeChange}
+              />
               Full time
             </label>
             <div className="mt-8">

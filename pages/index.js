@@ -4,7 +4,9 @@ import JobsContext from '@/lib/context';
 
 const Index = () => (
   <JobsContext.Consumer>
-    {({ description, location }) => <JobList description={description} location={location} />}
+    {({ description, location, fullTime }) => (
+      <JobList description={description} location={location} full_time={fullTime ? 'on' : 'off'} />
+    )}
   </JobsContext.Consumer>
 );
 
