@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { number, string } from 'prop-types';
+import IconLink from '@/components/IconLink';
 
 const Error = ({ errorCode, text }) => {
   const errorCodes = {
@@ -16,13 +17,12 @@ const Error = ({ errorCode, text }) => {
           {errorCode ? `${errorCode}:` : ''} {message}
         </title>
       </Head>
-      <div className="pt-8 text-center">
-        {errorCode ? (
-          <h1 className="text-4xl font-bold mb-8 text-blue-secondary">{errorCode}</h1>
-        ) : null}
+      <div className="pt-8 text-center space-y-8">
+        {errorCode ? <h1 className="text-4xl font-bold text-blue-secondary">{errorCode}</h1> : null}
         <div>
           <h2 className="text-blue-primary text-lg">{message}</h2>
         </div>
+        <IconLink iconName="keyboard_backspace" text="Back to search" href="/" />
       </div>
     </>
   );

@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import IconLabel from '@/components/IconLabel';
+import IconLink from '@/components/IconLink';
 import Error from '@/components/Error';
 import { SiteLayout } from '@/components/Layouts';
 import Tag from '@/components/Tag';
@@ -30,12 +30,12 @@ const JobPage = ({ errorCode, jobListing }) => {
     <main>
       <article className="lg:grid lg:grid-cols-job lg:place-content-between lg:gap-x-12">
         <aside className="font-poppins text-sm leading-none">
-          <Link href="/">
-            <a className="text-blue-secondary font-medium flex items-center mb-8 pb-1">
-              <i className="material-icons">keyboard_backspace</i>
-              <span className="ml-4">Back to search</span>
-            </a>
-          </Link>
+          <IconLink
+            iconName="keyboard_backspace"
+            text="Back to search"
+            href="/"
+            additionalClassStyles="mb-8 pb-1"
+          />
           <p className="text-gray-dark uppercase mb-4">How to apply</p>
           <ReactMarkdown
             className="how-to-apply text-blue-primary leading-5 mb-8 pb-1 overflow-hidden"
