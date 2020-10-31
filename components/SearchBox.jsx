@@ -11,6 +11,12 @@ const SearchBox = () => {
           onChangeDescription(searchRef.current.value);
         };
 
+        const onHandleKeyUp = (e) => {
+          if (e.keyCode === 13) {
+            onChangeDescription(searchRef.current.value);
+          }
+        };
+
         return (
           <div className="p-1 rounded bg-white grid grid-cols-searchbox-button md:grid-cols-searchbox-button-lg shadow-lg max-w-3xl mx-auto">
             <i className="material-icons flex items-center justify-center text-gray-dark">
@@ -22,6 +28,7 @@ const SearchBox = () => {
               placeholder="Title, Companies, Expertise"
               defaultValue={description}
               ref={searchRef}
+              onKeyUp={onHandleKeyUp}
             />
             <button
               onClick={onHandleClick}
