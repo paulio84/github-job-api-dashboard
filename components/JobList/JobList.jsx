@@ -16,24 +16,30 @@ const JobList = ({ description = '', location = '', full_time = '' }) => {
 
   return (
     <div>
-      <ul>
-        {data.map((job) => (
-          <li key={job.id}>
-            <Link href={`/jobs/${job.id}`}>
-              <a>
-                <JobCard
-                  companyName={job.company}
-                  title={job.title}
-                  type={job.type}
-                  location={job.location}
-                  createdAt={job.created_at}
-                  companyLogo={job.company_logo}
-                />
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {data && data.length > 0 ? (
+        <ul>
+          {data.map((job) => (
+            <li key={job.id}>
+              <Link href={`/jobs/${job.id}`}>
+                <a>
+                  <JobCard
+                    companyName={job.company}
+                    title={job.title}
+                    type={job.type}
+                    location={job.location}
+                    createdAt={job.created_at}
+                    companyLogo={job.company_logo}
+                  />
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="font-poppins text-center text-blue-primary text-2xl font-medium mt-8">
+          No Jobs Found
+        </p>
+      )}
     </div>
   );
 };
