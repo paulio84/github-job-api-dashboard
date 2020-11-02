@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
@@ -27,63 +28,66 @@ const JobPage = ({ errorCode, jobListing }) => {
   const formattedCreatedAt = formatCreatedAtDate(created_at);
 
   return (
-    <main>
-      <article className="lg:grid lg:grid-cols-job lg:place-content-between lg:gap-x-12">
-        <aside className="font-poppins text-sm leading-none">
-          <IconLink
-            iconName="keyboard_backspace"
-            text="Back to search"
-            href="/"
-            additionalClassStyles="mb-8 pb-1"
-          />
-          <p className="text-gray-dark uppercase mb-4">How to apply</p>
-          <ReactMarkdown
-            className="how-to-apply text-blue-primary leading-5 mb-8 pb-1 overflow-hidden"
-            plugins={[gfm]}
-            children={how_to_apply}
-            linkTarget="_blank"
-          />
-        </aside>
-        <section className="font-roboto text-blue-primary">
-          <div className="md:flex md:items-center mb-3 md:mb-2">
-            <h1 className="text-2xl font-bold mb-1 md:mb-0 md:mr-4 leading-none">{title}</h1>
-            <Tag text={type} />
-          </div>
-          <IconLabel
-            iconName="schedule"
-            text={formatDistanceToNow(formattedCreatedAt, { addSuffix: true })}
-            additionalClassStyles="text-xs text-gray-dark mb-8"
-          />
-          <div className="flex mb-8">
-            <aside>
-              <img
-                className="rounded img-size-42"
-                src={company_logo ? company_logo : 'https://via.placeholder.com/42'}
-                alt={`${company} Logo`}
-              />
-            </aside>
-            <section className="ml-3 w-full">
-              <p className="font-bold text-lg leading-5 mb-2">{company}</p>
-              <div className="md:flex md:items-center md:justify-between">
-                <div className="flex justify-between md:space-x-8">
-                  <IconLabel
-                    iconName="public"
-                    text={location}
-                    additionalClassStyles="text-xs text-gray-dark"
-                  />
+    <>
+      <NextSeo title={`Github Jobs - ${title} at ${company}`} />
+      <main>
+        <article className="lg:grid lg:grid-cols-job lg:place-content-between lg:gap-x-12">
+          <aside className="font-poppins text-sm leading-none">
+            <IconLink
+              iconName="keyboard_backspace"
+              text="Back to search"
+              href="/"
+              additionalClassStyles="mb-8 pb-1"
+            />
+            <p className="text-gray-dark uppercase mb-4">How to apply</p>
+            <ReactMarkdown
+              className="how-to-apply text-blue-primary leading-5 mb-8 pb-1 overflow-hidden"
+              plugins={[gfm]}
+              children={how_to_apply}
+              linkTarget="_blank"
+            />
+          </aside>
+          <section className="font-roboto text-blue-primary">
+            <div className="md:flex md:items-center mb-3 md:mb-2">
+              <h1 className="text-2xl font-bold mb-1 md:mb-0 md:mr-4 leading-none">{title}</h1>
+              <Tag text={type} />
+            </div>
+            <IconLabel
+              iconName="schedule"
+              text={formatDistanceToNow(formattedCreatedAt, { addSuffix: true })}
+              additionalClassStyles="text-xs text-gray-dark mb-8"
+            />
+            <div className="flex mb-8">
+              <aside>
+                <img
+                  className="rounded img-size-42"
+                  src={company_logo ? company_logo : 'https://via.placeholder.com/42'}
+                  alt={`${company} Logo`}
+                />
+              </aside>
+              <section className="ml-3 w-full">
+                <p className="font-bold text-lg leading-5 mb-2">{company}</p>
+                <div className="md:flex md:items-center md:justify-between">
+                  <div className="flex justify-between md:space-x-8">
+                    <IconLabel
+                      iconName="public"
+                      text={location}
+                      additionalClassStyles="text-xs text-gray-dark"
+                    />
+                  </div>
                 </div>
-              </div>
-            </section>
-          </div>
-          <ReactMarkdown
-            className="description"
-            plugins={[gfm]}
-            children={description}
-            linkTarget="_blank"
-          />
-        </section>
-      </article>
-    </main>
+              </section>
+            </div>
+            <ReactMarkdown
+              className="description"
+              plugins={[gfm]}
+              children={description}
+              linkTarget="_blank"
+            />
+          </section>
+        </article>
+      </main>
+    </>
   );
 };
 
