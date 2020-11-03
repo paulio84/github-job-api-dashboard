@@ -6,6 +6,20 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
     updateCurrentPage(newPage);
   };
 
+  const pageControls = [];
+  for (let i = 1; i <= numPages; i++) {
+    const classes = i === currentPage ? 'text-white bg-blue-secondary' : '';
+    pageControls.push(
+      <PageControl
+        key={i}
+        onClick={() => handleUpdateCurrentPage(i)}
+        additionalClassStyles={classes}
+      >
+        {i}
+      </PageControl>
+    );
+  }
+
   return (
     <>
       <div className="font-roboto text-gray-dark mt-6 lg:mt-8 text-sm select-none">
@@ -13,7 +27,7 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
           <PageControl onClick={() => handleUpdateCurrentPage(currentPage - 1)}>
             <i className="material-icons">chevron_left</i>
           </PageControl>
-          {/* ... More page Controls here */}
+          {pageControls}
           <PageControl onClick={() => handleUpdateCurrentPage(currentPage + 1)}>
             <i className="material-icons">chevron_right</i>
           </PageControl>
