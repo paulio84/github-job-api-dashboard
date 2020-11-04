@@ -40,7 +40,7 @@ const JobFilters = () => {
         const handleLocationChange = (e) => {
           const newPlaces = buildPlaceNameObject(places);
           setPlaces({ ...newPlaces, [e.target.dataset.value]: e.target.checked });
-          locationRef.current.value = e.target.dataset.value;
+          locationRef.current.value = e.target.checked ? e.target.dataset.value : '';
           onChangeLocation(locationRef.current.value);
         };
 
