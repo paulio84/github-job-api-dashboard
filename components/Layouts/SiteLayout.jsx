@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import JobsContext from '@/lib/context';
 
 const SiteLayout = ({ children }) => {
@@ -32,6 +33,7 @@ const SiteLayout = ({ children }) => {
       <div className="container px-3 md:mx-auto">
         <Header />
         {children}
+        <Footer />
       </div>
     </JobsContext.Provider>
   );
