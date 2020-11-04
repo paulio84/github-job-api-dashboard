@@ -12,17 +12,19 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
   if (!isMobileDevice) {
     let currentPageGroup = [];
     if (currentPage === 1) {
-      currentPageGroup = [
-        createPageControl(currentPage, currentPage, handleUpdateCurrentPage),
-        createPageControl(currentPage + 1, currentPage, handleUpdateCurrentPage),
-        createPageControl(currentPage + 2, currentPage, handleUpdateCurrentPage)
-      ];
+      for (let i = 0; i < Math.min(3, numPages); i++) {
+        currentPageGroup = [
+          ...currentPageGroup,
+          createPageControl(currentPage + i, currentPage, handleUpdateCurrentPage)
+        ];
+      }
     } else if (currentPage === numPages) {
-      currentPageGroup = [
-        createPageControl(currentPage - 2, currentPage, handleUpdateCurrentPage),
-        createPageControl(currentPage - 1, currentPage, handleUpdateCurrentPage),
-        createPageControl(currentPage, currentPage, handleUpdateCurrentPage)
-      ];
+      for (let i = Math.min(3, numPages) - 1; i > 0; i--) {
+        currentPageGroup = [
+          ...currentPageGroup,
+          createPageControl(currentPage - i, currentPage, handleUpdateCurrentPage)
+        ];
+      }
     } else {
       currentPageGroup = [
         createPageControl(currentPage - 1, currentPage, handleUpdateCurrentPage),
@@ -34,14 +36,14 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
     pageControls.push(...currentPageGroup);
 
     // add ... when there is a break in pages
-    if (+currentPageGroup[0].key - 1 > 1) {
+    if (parseInt(currentPageGroup[0].key) - 1 > 1) {
       pageControls.unshift(
         <li key={'abc'} className={`rounded flex items-center justify-center p-3 w-10`}>
           <i className="material-icons">more_horiz</i>
         </li>
       );
     }
-    if (numPages - +currentPageGroup[currentPageGroup.length - 1].key > 1) {
+    if (numPages - parseInt(currentPageGroup[currentPageGroup.length - 1].key) > 1) {
       pageControls.push(
         <li key={'xyz'} className={`rounded flex items-center justify-center p-3 w-10`}>
           <i className="material-icons">more_horiz</i>
