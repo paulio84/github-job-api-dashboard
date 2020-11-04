@@ -1,3 +1,4 @@
+import useCheckMobileDevice from '@/hooks/useCheckMobileDevice';
 import PageControl from './PageControl';
 
 const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
@@ -7,17 +8,20 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
   };
 
   const pageControls = [];
-  for (let i = 1; i <= numPages; i++) {
-    const classes = i === currentPage ? 'text-white bg-blue-secondary' : '';
-    pageControls.push(
-      <PageControl
-        key={i}
-        onClick={() => handleUpdateCurrentPage(i)}
-        additionalClassStyles={classes}
-      >
-        {i}
-      </PageControl>
-    );
+  const isMobileDevice = useCheckMobileDevice(768);
+  if (!isMobileDevice) {
+    for (let i = 1; i <= numPages; i++) {
+      const classes = i === currentPage ? 'text-white bg-blue-secondary hover:text-white' : '';
+      pageControls.push(
+        <PageControl
+          key={i}
+          onClick={() => handleUpdateCurrentPage(i)}
+          additionalClassStyles={classes}
+        >
+          {i}
+        </PageControl>
+      );
+    }
   }
 
   return (
