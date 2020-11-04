@@ -10,17 +10,51 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
   const pageControls = [];
   const isMobileDevice = useCheckMobileDevice(768);
   if (!isMobileDevice) {
-    for (let i = 1; i <= numPages; i++) {
-      const classes = i === currentPage ? 'text-white bg-blue-secondary hover:text-white' : '';
-      pageControls.push(
-        <PageControl
-          key={i}
-          onClick={() => handleUpdateCurrentPage(i)}
-          additionalClassStyles={classes}
-        >
-          {i}
-        </PageControl>
+    let currentPageGroup = [];
+    if (currentPage === 1) {
+      currentPageGroup = [
+        createPageControl(currentPage, currentPage, handleUpdateCurrentPage),
+        createPageControl(currentPage + 1, currentPage, handleUpdateCurrentPage),
+        createPageControl(currentPage + 2, currentPage, handleUpdateCurrentPage)
+      ];
+    } else if (currentPage === numPages) {
+      currentPageGroup = [
+        createPageControl(currentPage - 2, currentPage, handleUpdateCurrentPage),
+        createPageControl(currentPage - 1, currentPage, handleUpdateCurrentPage),
+        createPageControl(currentPage, currentPage, handleUpdateCurrentPage)
+      ];
+    } else {
+      currentPageGroup = [
+        createPageControl(currentPage - 1, currentPage, handleUpdateCurrentPage),
+        createPageControl(currentPage, currentPage, handleUpdateCurrentPage),
+        createPageControl(currentPage + 1, currentPage, handleUpdateCurrentPage)
+      ];
+    }
+
+    pageControls.push(...currentPageGroup);
+
+    // add ... when there is a break in pages
+    if (+currentPageGroup[0].key - 1 > 1) {
+      pageControls.unshift(
+        <li key={'abc'} className={`rounded flex items-center justify-center p-3 w-10`}>
+          <i className="material-icons">more_horiz</i>
+        </li>
       );
+    }
+    if (numPages - +currentPageGroup[currentPageGroup.length - 1].key > 1) {
+      pageControls.push(
+        <li key={'xyz'} className={`rounded flex items-center justify-center p-3 w-10`}>
+          <i className="material-icons">more_horiz</i>
+        </li>
+      );
+    }
+
+    // check if page 1 and the last page numbers are part of the pageControls
+    if (pageControls.findIndex((el) => el.key === '1') < 0) {
+      pageControls.unshift(createPageControl(1, currentPage, handleUpdateCurrentPage));
+    }
+    if (pageControls.findIndex((el) => +el.key === numPages) < 0) {
+      pageControls.push(createPageControl(numPages, currentPage, handleUpdateCurrentPage));
     }
   }
 
@@ -40,5 +74,18 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
     </>
   );
 };
+
+function createPageControl(value, currentPage, handleUpdateCurrentPage) {
+  const classes = value === currentPage ? 'text-white bg-blue-secondary hover:text-white' : '';
+  return (
+    <PageControl
+      key={value}
+      onClick={() => handleUpdateCurrentPage(value)}
+      additionalClassStyles={classes}
+    >
+      {value}
+    </PageControl>
+  );
+}
 
 export default PageControlContainer;
