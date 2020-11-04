@@ -7,7 +7,7 @@ const Spinner = () => (
     height={60}
     width={100}
     svgClass="fill-current mx-auto"
-    className="text-blue-secondary mt-6"
+    className="text-blue-secondary mt-6 lg:mt-8"
   />
 );
 
