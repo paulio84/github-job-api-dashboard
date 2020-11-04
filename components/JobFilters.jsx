@@ -1,8 +1,14 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import JobsContext from '@/lib/context';
 import { debounce } from '@/lib/helpers';
 
 const JobFilters = () => {
+  const [places, setPlaces] = useState({
+    London: false,
+    Amsterdam: false,
+    'New York': false,
+    Berlin: false
+  });
   const locationRef = useRef();
   const fullTimeRef = useRef();
 
@@ -10,6 +16,10 @@ const JobFilters = () => {
     <JobsContext.Consumer>
       {({ location, onChangeLocation, fullTime, onUpdateFullTimeFlag }) => {
         const handleChange = () => {
+          if (locationRef.current.value === '') {
+            const newPlaces = buildPlaceNameObject(places);
+            setPlaces({ ...newPlaces });
+          }
           onChangeLocation(locationRef.current.value);
         };
 
@@ -19,8 +29,19 @@ const JobFilters = () => {
 
         const handleKeyUp = (e) => {
           if (e.keyCode === 13) {
+            if (locationRef.current.value === '') {
+              const newPlaces = buildPlaceNameObject(places);
+              setPlaces({ ...newPlaces });
+            }
             onChangeLocation(locationRef.current.value);
           }
+        };
+
+        const handleLocationChange = (e) => {
+          const newPlaces = buildPlaceNameObject(places);
+          setPlaces({ ...newPlaces, [e.target.dataset.value]: e.target.checked });
+          locationRef.current.value = e.target.dataset.value;
+          onChangeLocation(locationRef.current.value);
         };
 
         return (
@@ -53,22 +74,19 @@ const JobFilters = () => {
                 />
               </div>
               <div className="flex flex-col space-y-4">
-                <label className="font-medium w-fit cursor-pointer" htmlFor="london">
-                  <input id="london" className="mr-3 ml-1 transform scale-150" type="checkbox" />
-                  London
-                </label>
-                <label className="font-medium w-fit cursor-pointer" htmlFor="amsterdam">
-                  <input id="amsterdam" className="mr-3 ml-1 transform scale-150" type="checkbox" />
-                  Amsterdam
-                </label>
-                <label className="font-medium w-fit cursor-pointer" htmlFor="newyork">
-                  <input id="newyork" className="mr-3 ml-1 transform scale-150" type="checkbox" />
-                  New York
-                </label>
-                <label className="font-medium w-fit cursor-pointer" htmlFor="berlin">
-                  <input id="berlin" className="mr-3 ml-1 transform scale-150" type="checkbox" />
-                  Berlin
-                </label>
+                {Object.keys(places).map((place) => (
+                  <label key={place} className="font-medium w-fit cursor-pointer" htmlFor={place}>
+                    <input
+                      id={place}
+                      data-value={place}
+                      className="mr-3 ml-1 transform scale-150"
+                      type="checkbox"
+                      onChange={handleLocationChange}
+                      checked={places[place]}
+                    />
+                    {place}
+                  </label>
+                ))}
               </div>
             </div>
           </div>
@@ -77,5 +95,14 @@ const JobFilters = () => {
     </JobsContext.Consumer>
   );
 };
+
+function buildPlaceNameObject(places) {
+  const newPlaces = {};
+  for (const place in places) {
+    newPlaces[place] = false;
+  }
+
+  return newPlaces;
+}
 
 export default JobFilters;
