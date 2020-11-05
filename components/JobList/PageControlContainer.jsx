@@ -35,20 +35,24 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
     }
 
     pageControls.push(...currentPageGroup);
+    console.log(currentPageGroup);
 
     // add ... when there is a break in pages
+    // these ... PageControls will have no function but are needed when there is a break in page numbers
+    // therefore they are part of the array and need a key prop
+    // I chose to hard code the key prop rather than generating something random each time
     if (parseInt(currentPageGroup[0].key) - 1 > 1) {
       pageControls.unshift(
-        <li key={'abc'} className={`rounded flex items-center justify-center p-3 w-10`}>
+        <PageControl key={'abc'} isClickable={false}>
           <i className="material-icons">more_horiz</i>
-        </li>
+        </PageControl>
       );
     }
     if (numPages - parseInt(currentPageGroup[currentPageGroup.length - 1].key) > 1) {
       pageControls.push(
-        <li key={'xyz'} className={`rounded flex items-center justify-center p-3 w-10`}>
+        <PageControl key={'xyz'} isClickable={false}>
           <i className="material-icons">more_horiz</i>
-        </li>
+        </PageControl>
       );
     }
 
