@@ -30,7 +30,7 @@ const JobPage = ({ errorCode, jobListing }) => {
 
   return (
     <>
-      <NextSeo title={`Github Jobs - ${title} at ${company}`} />
+      <NextSeo title={`Github Jobs - ${title} at ${company}`} description={title} />
       <main>
         <article className="lg:grid lg:grid-cols-job lg:place-content-between lg:gap-x-12">
           <aside className="font-poppins text-sm leading-none">

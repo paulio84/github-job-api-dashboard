@@ -5,7 +5,7 @@ import JobsContext from '@/lib/context';
 
 const Index = () => (
   <>
-    <NextSeo title="Github Jobs" />
+    <NextSeo title="Github Jobs" description="Github Jobs Dashboard" />
     <JobsContext.Consumer>
       {({ description, location, fullTime }) => (
         <JobList
