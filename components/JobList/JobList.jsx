@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { string, number } from 'prop-types';
 import useFetchJobs from '@/hooks/useFetchJobs';
 import JobCard from './JobCard';
 import Spinner from './Spinner';
 import PageControlContainer from './PageControlContainer';
 
-const JobList = ({ description = '', location = '', full_time = '', jobsToDisplay = 5 }) => {
+const JobList = ({ description, location, full_time, jobsToDisplay }) => {
   const { data, error, isLoading } = useFetchJobs(description, location, full_time);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -58,6 +59,18 @@ const JobList = ({ description = '', location = '', full_time = '', jobsToDispla
       )}
     </>
   );
+};
+JobList.propTypes = {
+  description: string,
+  location: string,
+  full_time: string,
+  jobsToDisplay: number
+};
+JobList.defaultProps = {
+  description: '',
+  location: '',
+  full_time: '',
+  jobsToDisplay: 5
 };
 
 export default JobList;

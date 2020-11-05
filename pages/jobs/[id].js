@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { object, bool, number, oneOfType } from 'prop-types';
 import IconLabel from '@/components/IconLabel';
 import IconLink from '@/components/IconLink';
 import Error from '@/components/Error';
@@ -89,6 +90,10 @@ const JobPage = ({ errorCode, jobListing }) => {
       </main>
     </>
   );
+};
+JobPage.propTypes = {
+  errorCode: oneOfType([bool, number]).isRequired,
+  jobListing: object.isRequired
 };
 
 JobPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>;

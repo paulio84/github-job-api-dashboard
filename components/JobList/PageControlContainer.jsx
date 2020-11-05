@@ -1,3 +1,4 @@
+import { number, func } from 'prop-types';
 import useCheckMobileDevice from '@/hooks/useCheckMobileDevice';
 import PageControl from './PageControl';
 
@@ -55,7 +56,7 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
     if (pageControls.findIndex((el) => el.key === '1') < 0) {
       pageControls.unshift(createPageControl(1, currentPage, handleUpdateCurrentPage));
     }
-    if (pageControls.findIndex((el) => +el.key === numPages) < 0) {
+    if (pageControls.findIndex((el) => parseInt(el.key) === numPages) < 0) {
       pageControls.push(createPageControl(numPages, currentPage, handleUpdateCurrentPage));
     }
   }
@@ -75,6 +76,11 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
       </div>
     </>
   );
+};
+PageControlContainer.propTypes = {
+  numPages: number.isRequired,
+  currentPage: number.isRequired,
+  updateCurrentPage: func.isRequired
 };
 
 function createPageControl(value, currentPage, handleUpdateCurrentPage) {

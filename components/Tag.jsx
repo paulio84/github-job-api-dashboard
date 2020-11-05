@@ -1,6 +1,6 @@
 import { string } from 'prop-types';
 
-const Label = ({ text, additionalClassStyles }) => (
+const Tag = ({ text, additionalClassStyles }) => (
   <span
     className={`font-bold text-xs inline-block border text-blue-primary p-2 rounded self-start leading-none min-w-fit ${
       additionalClassStyles ?? ''
@@ -9,9 +9,9 @@ const Label = ({ text, additionalClassStyles }) => (
     {text}
   </span>
 );
-Label.propTypes = {
+Tag.propTypes = {
   text: string.isRequired,
   additionalClassStyles: string
 };
 
-export default Label;
+export default Tag;
