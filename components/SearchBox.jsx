@@ -23,7 +23,7 @@ const SearchBox = () => {
               work_outline
             </i>
             <input
-              className="w-full py-4 pr-6 text-xs placeholder-gray-dark text-gray-dark font-roboto"
+              className="w-full py-4 pr-6 text-xs placeholder-gray-dark text-gray-dark font-roboto focus:outline-none"
               type="text"
               placeholder="Title, Companies, Expertise"
               defaultValue={description}
