@@ -35,7 +35,6 @@ const PageControlContainer = ({ numPages, currentPage, updateCurrentPage }) => {
     }
 
     pageControls.push(...currentPageGroup);
-    console.log(currentPageGroup);
 
     // add ... when there is a break in pages
     // these ... PageControls will have no function but are needed when there is a break in page numbers
