@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { string, number } from 'prop-types';
 import useFetchJobs from '@/hooks/useFetchJobs';
@@ -13,6 +13,10 @@ const JobList = ({ description, location, full_time, jobsToDisplay }) => {
   const onUpdateCurrentPage = (newCurrentPage) => {
     setCurrentPage(newCurrentPage);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [description, location, full_time, jobsToDisplay]);
 
   if (error)
     return (
